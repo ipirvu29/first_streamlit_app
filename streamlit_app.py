@@ -31,7 +31,7 @@ if not fruit_choice:
 streamlit.error('Please select a fruit to get information.')
 else:
 #import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 #just writes the data to the screen
 #streamlit.text(fruityvice_response.json())
 # normalizes the json version of the response 
@@ -40,6 +40,8 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_normalized)
 #dont run anything past her
 except URLError as e:
+streamlit.error()
+
 streamlit.stop()
 
 #import snowflake.connector
